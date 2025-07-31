@@ -7,7 +7,7 @@
     <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
     <PackageProjectUrl>https://github.com/microsoft/factoryorchestrator</PackageProjectUrl>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
     <OutputPath>$(MSBuildThisFileDirectory)../bin/$(Configuration)/$(Platform)/$(TargetName)</OutputPath>
     <!-- Deterministic Builds for source link -->
