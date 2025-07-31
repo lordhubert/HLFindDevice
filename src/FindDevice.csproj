@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Makaretu.Dns.Multicast" Version="0.25.0" />
+    <PackageReference Include="Makaretu.Dns.Multicast.New" Version="0.38" />
     <PackageReference Include="System.CommandLine.DragonFruit" Version="0.3.0-alpha.19405.1" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
