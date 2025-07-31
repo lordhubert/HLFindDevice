@@ -1,5 +1,7 @@
 # FindDevice
 
+Dupilcation of https://github.com/microsoft/FindDevice in order to add minor functionality.
+
 FindDevice is a basic .NET command line tool you can use to look for devices on your local network or even link-local devices (such as devices that support USBNCM). It uses DNS Service Discovery (DNS-SD) to look for devices that advertise the given service. By default, it looks for devices running [Factory Orchestrator](https://github.com/microsoft/FactoryOrchestrator) (_factorch._tcp.local) but can be configured to look for any DNS-SD service, such as Windows Device Portal (_wdp.tcp.local).
 
 FindDevice makes it easy to discover devices running a specified program/service, so that they can be then interacted with remotely.
@@ -7,9 +9,9 @@ FindDevice makes it easy to discover devices running a specified program/service
 ![image of FindDevice](https://user-images.githubusercontent.com/31931010/117501891-8c7b0f00-af33-11eb-94d7-6b4ee4b6e090.png)
 
 ## Installation
-The [GitHub releases page](https://github.com/microsoft/FindDevice/releases) has the latest builds for both Windows and Linux. Simply download and unzip your desired build and run FindDevice!
+The [GitHub releases page](https://github.com/lordhubert/HLFindDevice/releases) has the latest builds - win-x64 only for now. Simply download and unzip your desired build and run FindDevice!
 
-You likely will need to edit your firewall rules to allow FindDevice to work properly. It relies on inbound connections to UDP port 5353.
+You likely will need to edit your firewall rules to allow FindDevice to work properly. It relies on inbound connections on UDP port 5353.
 
 ## Usage
   FindDevice [options]
@@ -22,6 +24,7 @@ Options:
 | --display-ipv4 | Display the device IPv4 address(es) | true |
 | --display-ipv6 | Display the device IPv6 address(es) | false |
 | --display-port | Display the port the service is discovered on | false |
+| --display-txtrecord | Display the device TXT record, if present | true |
 | --timeout <timeout> | The amount of time in milliseconds to wait for responses (use greater than 2000ms for WiFi), after which the program exits. | Infinite |
 | --query-interval <query-interval> | The amount of time in milliseconds to wait between queries | 1000ms |
 | --service <service> | The DNS-SD service string used for discovery | _factorch._tcp.local |
