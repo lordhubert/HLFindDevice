@@ -25,7 +25,7 @@ namespace finddevice
         /// <param name="displayTXTRecord">Display the device TXT record Default: true</param>
         /// <param name="timeout">The amount of time in milliseconds to wait for responses (use greater than 2000 ms for WiFi). Default: Infinite</param>
         /// <param name="queryInterval">The amount of time in milliseconds to wait between queries. Default: 1000ms</param>
-        /// <param name="service">The DNS-SD service string used for discovery Default: _hue._tcp.local</param>
+        /// <param name="service">The DNS-SD service string used for discovery Default: _factorch._tcp.local</param>
         ///                       
         static async Task Main(bool linkLocalOnly = false,
             bool displayHostname = true,
@@ -35,7 +35,7 @@ namespace finddevice
             bool displayTXTRecord = true, // add
             int timeout = -1,
             int queryInterval = 1000,
-            string service = "_hue._tcp.local"
+            string service = "_factorch._tcp.local"
             )
         {
             if (!displayHostname && !displayIPv4 && !displayIPv6)
