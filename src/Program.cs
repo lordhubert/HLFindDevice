@@ -22,18 +22,20 @@ namespace finddevice
         /// <param name="displayIPv4">Display the device IPv4 address Default: true</param>
         /// <param name="displayIPv6">Display the device IPv6 address Default: false</param>
         /// <param name="displayPort">Display the port the service is discovered on Default: false</param>
+        /// <param name="displayTXTRecord">Display the device TXT record Default: true</param>
         /// <param name="timeout">The amount of time in milliseconds to wait for responses (use greater than 2000 ms for WiFi). Default: Infinite</param>
         /// <param name="queryInterval">The amount of time in milliseconds to wait between queries. Default: 1000ms</param>
-        /// <param name="service">The DNS-SD service string used for discovery Default: _factorch._tcp.local</param>
+        /// <param name="service">The DNS-SD service string used for discovery Default: _hue._tcp.local</param>
         ///                       
         static async Task Main(bool linkLocalOnly = false,
             bool displayHostname = true,
             bool displayIPv4 = true,
             bool displayIPv6 = false,
             bool displayPort = false,
+            bool displayTXTRecord = true, // add
             int timeout = -1,
             int queryInterval = 1000,
-            string service = "_factorch._tcp.local"
+            string service = "_hue._tcp.local"
             )
         {
             if (!displayHostname && !displayIPv4 && !displayIPv6)
@@ -65,6 +67,7 @@ namespace finddevice
             DisplayIPv4 = displayIPv4;
             DisplayIPv6 = displayIPv6;
             DisplayPort = displayPort;
+            DisplayTXTRecord = displayTXTRecord; // add
             DeviceList = new ConcurrentDictionary<string, bool>();
             PrintQueue = new ConcurrentQueue<string>();
             MDns = new MulticastService();
@@ -199,7 +202,17 @@ namespace finddevice
             {
                 output += srvRecords.First().Port + " ";
             }
-
+            if (DisplayTXTRecord)
+            {
+                var txtRecords = e.Message.AdditionalRecords.Union(e.Message.Answers).OfType<TXTRecord>();
+                foreach (var txt in txtRecords)
+                {
+                    foreach (var entry in txt.Strings)
+                    {
+                        output += $"{entry} ";
+                    }
+                }
+            }
             if (shouldAdd)
             {
                 if (DeviceList.TryAdd(output, true))
@@ -261,6 +274,7 @@ namespace finddevice
         private static bool DisplayIPv4;
         private static bool DisplayIPv6;
         private static bool DisplayPort;
+        private static bool DisplayTXTRecord; /// ok
         private static object PrintLock = new object();
         private static System.Timers.Timer QueryTimer;
         private static ConcurrentDictionary<string, bool> DeviceList;
