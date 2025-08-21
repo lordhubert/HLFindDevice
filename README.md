@@ -1,6 +1,6 @@
 # FindDevice
 
-**Note: This repository is a dupilcation of https://github.com/microsoft/FindDevice in order to add minor functionality (fetching of DNS TXT records).**
+**Note: This repository is a duplication of https://github.com/microsoft/FindDevice in order to add minor functionality (fetching of DNS TXT records).**
 
 FindDevice is a basic .NET command line tool you can use to look for devices on your local network or even link-local devices (such as devices that support USBNCM). It uses DNS Service Discovery (DNS-SD) to look for devices that advertise the given service. By default, it looks for devices running [Factory Orchestrator](https://github.com/microsoft/FactoryOrchestrator) (_factorch._tcp.local) but can be configured to look for any DNS-SD service, such as Windows Device Portal (_wdp.tcp.local).
 
